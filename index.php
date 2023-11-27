@@ -4,71 +4,44 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
+  <title>SNMP</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="node_modules/swiper/swiper-bundle.min.css" />
-
+  <script src="fetchData.js" defer></script>
 </head>
 
 <body>
   <section class="projects" id="projects">
     <div class="container">
-    <h1>SNMP DATA</h1>
+      <h1>SNMP DATA</h1>
       <!-- Swiper -->
       <div class="swiper mySwiper">
         <div class="swiper-wrapper">
-        
-           <!-- system -->
+
+          <!-- system -->
           <div class="swiper-slide DataBase">
             <section>
-              
+
               <!--for demo wrap-->
-              
+
               <h2>System information</h2>
               <div class="tbl-content">
                 <table cellpadding="0" cellspacing="0" border="0">
-                  <thead>
-                    <tr>
-                                        <?php
-                    $ip = "127.0.0.1:161";
-                    
-                    $var1 =  snmp2_get($ip, "public", ".1.3.6.1.2.1.1.1.0");
-                    $var2 =  snmp2_get($ip, "public", ".1.3.6.1.2.1.1.2.0") ;
-                    $var3 = snmp2_get($ip, "public", ".1.3.6.1.2.1.1.3.0") ;
-                    $var4 = snmp2_get($ip, "public", ".1.3.6.1.2.1.1.4.0") ;
-                    $var5 =  snmp2_get($ip, "public", ".1.3.6.1.2.1.1.5.0");
-                    $var6 = snmp2_get($ip, "public", ".1.3.6.1.2.1.1.6.0") ;
-                    echo "<tr> <td> &nbsp &nbsp &nbsp $var1 </td> </tr>
-                       <tr> <td> &nbsp &nbsp &nbsp  $var1 </td> </tr>
-                       <tr> <td> &nbsp &nbsp &nbsp  $var2 </td> </tr>
-                       <tr> <td> &nbsp &nbsp &nbsp  $var3 </td> </tr>
-                       <tr> <td> &nbsp &nbsp &nbsp $var4 </td> </tr>
-                       <tr> <td> &nbsp &nbsp &nbsp $var5 </td> </tr>
-                       <tr> <td> &nbsp &nbsp &nbsp $var6 </td> </tr>
-";
-                    ?>
-                      
+                  <thead id="system_children">
+                    <!-- we add chilren here by js -->
                   </thead>
                 </table>
-              </div>
-              <div class="tbl-content">
-               
               </div>
             </section>
             <!-- <div class="details">fsadfsdf</div> -->
             <div class="swiper-scrollbar"></div>
           </div>
 
-           <!-- UDP TABLE -->
-           <div class="swiper-slide DataBase">
+          <!-- UDP TABLE -->
+          <div class="swiper-slide DataBase">
             <section>
-              <?php $ip = "127.0.0.1:161";
-              $a = snmp2_walk($ip, "public", ".1.3.6.1.2.1.7.5.1.1");
-              $b = snmp2_walk($ip, "public", ".1.3.6.1.2.1.7.5.1.2");
-              $i = 0;
-              ?>
               <!--for demo wrap-->
-           
+
               <h2>UDP Table</h2>
               <div class="tbl-header">
                 <table cellpadding="0" cellspacing="0" border="0">
@@ -83,18 +56,8 @@
               </div>
               <div class="tbl-content">
                 <table cellpadding="0" cellspacing="0" border="0">
-                  <tbody>
-                    <?php
-                    foreach ($a as $k => $val) {
-                      $data = explode(':', $a[$i])[1];
-                      echo "<tr>
-            <td> $i </td>
-            <td> $data </td>
-            <td> $b[$i] </td>
-          </tr>";
-                      $i++;
-                    }
-                    ?>
+                  <tbody id="udp-chlidren">
+                    <!-- we add children here by java script -->
 
                   </tbody>
                 </table>
@@ -103,18 +66,12 @@
             <!-- <div class="details">fsadfsdf</div> -->
             <div class="swiper-scrollbar"></div>
           </div>
-          
+
           <!-- ARP -->
           <div class="swiper-slide DataBase">
             <section>
-              <?php $ip = "127.0.0.1:161";
-              $a = snmp2_walk($ip, "public", ".1.3.6.1.2.1.4.22.1.2");
-              $b = snmp2_walk($ip, "public", ".1.3.6.1.2.1.4.22.1.3");
-              $c = snmp2_walk($ip, "public", ".1.3.6.1.2.1.4.22.1.4");
-              $i = 0;
-              ?>
               <!--for demo wrap-->
-            
+
               <h2>ARP Table</h2>
               <div class="tbl-header">
                 <table cellpadding="0" cellspacing="0" border="0">
@@ -130,18 +87,8 @@
               </div>
               <div class="tbl-content">
                 <table cellpadding="0" cellspacing="0" border="0">
-                  <tbody>
-                    <?php
-                    foreach ($a as $k => $val) {
-                      echo "<tr>
-                        <td> $i </td>
-                        <td> $a[$i] </td>
-                        <td> $b[$i] </td>
-                        <td> $c[$i] </td>
-                      </tr>";
-                      $i++;
-                      }
-                    ?>
+                  <tbody id="arp_children">
+
 
                   </tbody>
                 </table>
@@ -154,41 +101,29 @@
           <!-- TCP TABLE -->
           <div class="swiper-slide DataBase">
             <section>
-              <?php $ip = "127.0.0.1:161";
-              
-                $local_address = snmp2_walk($ip, 'public', '1.3.6.1.2.1.6.13.1.2');
-                $local_port = snmp2_walk($ip, 'public', '1.3.6.1.2.1.6.13.1.3');
-                $remote_address = snmp2_walk($ip, 'public', '1.3.6.1.2.1.6.13.1.4');
-                $remote_port = snmp2_walk($ip, 'public', '1.3.6.1.2.1.6.13.1.5');
-                $state = snmp2_walk($ip, 'public', '1.3.6.1.2.1.6.13.1.1');
-                $i = 0;
-              ?>
               <!--for demo wrap-->
-             
+
               <h2>TCP Table</h2>
               <div class="tbl-header">
                 <table cellpadding="0" cellspacing="0" border="0">
                   <thead>
                     <tr>
                       <th>#</th>
-                     <th > Local Address </th> <th> Local Port </th><th> Remote Address </th><th> Remote Port </th><th> State </th>  </tr>
-                  
+                      <th> Local Address </th>
+                      <th> Local Port </th>
+                      <th> Remote Address </th>
+                      <th> Remote Port </th>
+                      <th> State </th>
+                    </tr>
+
                   </thead>
                 </table>
               </div>
               <div class="tbl-content">
                 <table cellpadding="0" cellspacing="0" border="0">
-                  <tbody>
-                    <?php
-                     foreach ($local_address as $k => $val) {
-                      $local_address_explode = explode(':', $local_address[$i])[1];
-                      $remote_address_explode = explode(':', $remote_address[$i])[1];
-                    
-                      echo "<tr> <td> $i </td> <td> $local_address_explode </td> <td> $local_port[$i]</td> <td> $remote_address_explode </td> <td> $remote_port[$i] </td> <td> $state[$i] </td> </tr>";
-	                        $i++;
-                        }
-                    ?>
-                  
+                  <tbody id="Tcp_children">
+
+
 
                   </tbody>
                 </table>

@@ -67,8 +67,7 @@ body {
 
 /* follow me template */
 .made-with-love {
-  margin-top: 20px;
-  padding: 10px;
+  padding-top: 10px;
   clear: left;
   text-align: center;
   font-size: 10px;
@@ -128,7 +127,6 @@ iframe {
 }
 .append-buttons {
   text-align: center;
-  margin-top: 10px;
 }
 
 .append-buttons a {
