@@ -175,3 +175,12 @@ iframe {
 .db-text p {
   margin-bottom: 0.3rem;
 }
+.form {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 70px;
+}
+form {
+  display: inline-block;
+}
