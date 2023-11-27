@@ -1,4 +1,8 @@
 <?php
+
+header("Access-Control-Allow-Origin: *");
+header("Content-Type: application/json");
+
 $ip = "127.0.0.1:161";
 $local_address = snmp2_walk($ip, 'public', '1.3.6.1.2.1.6.13.1.2');
 $local_port = snmp2_walk($ip, 'public', '1.3.6.1.2.1.6.13.1.3');
