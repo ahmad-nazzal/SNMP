@@ -13,6 +13,7 @@
 <body>
   <section class="projects" id="projects">
     <div class="container">
+    <h1>SNMP DATA</h1>
       <!-- Swiper -->
       <div class="swiper mySwiper">
         <div class="swiper-wrapper">
@@ -22,7 +23,7 @@
             <section>
               
               <!--for demo wrap-->
-              <h1>SNMP DATA</h1>
+              
               <h2>System information</h2>
               <div class="tbl-content">
                 <table cellpadding="0" cellspacing="0" border="0">
@@ -67,7 +68,7 @@
               $i = 0;
               ?>
               <!--for demo wrap-->
-              <h1>SNMP DATA</h1>
+           
               <h2>UDP Table</h2>
               <div class="tbl-header">
                 <table cellpadding="0" cellspacing="0" border="0">
@@ -113,7 +114,7 @@
               $i = 0;
               ?>
               <!--for demo wrap-->
-              <h1>SNMP DATA</h1>
+            
               <h2>ARP Table</h2>
               <div class="tbl-header">
                 <table cellpadding="0" cellspacing="0" border="0">
@@ -163,7 +164,7 @@
                 $i = 0;
               ?>
               <!--for demo wrap-->
-              <h1>SNMP DATA</h1>
+             
               <h2>TCP Table</h2>
               <div class="tbl-header">
                 <table cellpadding="0" cellspacing="0" border="0">
