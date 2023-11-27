@@ -16,6 +16,8 @@
       <!-- Swiper -->
       <div class="swiper mySwiper">
         <div class="swiper-wrapper">
+        
+           <!-- system -->
           <div class="swiper-slide DataBase">
             <section>
               <?php $ip = "127.0.0.1:161";
@@ -58,6 +60,52 @@
             <!-- <div class="details">fsadfsdf</div> -->
             <div class="swiper-scrollbar"></div>
           </div>
+
+           <!-- UDP TABLE -->
+           <div class="swiper-slide DataBase">
+            <section>
+              <?php $ip = "127.0.0.1:161";
+              $a = snmp2_walk($ip, "public", ".1.3.6.1.2.1.7.5.1.1");
+              $b = snmp2_walk($ip, "public", ".1.3.6.1.2.1.7.5.1.2");
+              $i = 0;
+              ?>
+              <!--for demo wrap-->
+              <h1>SNMP DATA</h1>
+              <div class="tbl-header">
+                <table cellpadding="0" cellspacing="0" border="0">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>IP Address</th>
+                      <th>PORT</th>
+                    </tr>
+                  </thead>
+                </table>
+              </div>
+              <div class="tbl-content">
+                <table cellpadding="0" cellspacing="0" border="0">
+                  <tbody>
+                    <?php
+                    foreach ($a as $k => $val) {
+                      $data = explode(':', $a[$i])[1];
+                      echo "<tr>
+            <td> $i </td>
+            <td> $data </td>
+            <td> $b[$i] </td>
+          </tr>";
+                      $i++;
+                    }
+                    ?>
+
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <!-- <div class="details">fsadfsdf</div> -->
+            <div class="swiper-scrollbar"></div>
+          </div>
+          
+          <!-- ARP -->
           <div class="swiper-slide DataBase">
             <section>
               <?php $ip = "127.0.0.1:161";
@@ -101,12 +149,17 @@
             <!-- <div class="details">fsadfsdf</div> -->
             <div class="swiper-scrollbar"></div>
           </div>
+          <!-- TCP TABLE -->
           <div class="swiper-slide DataBase">
             <section>
               <?php $ip = "127.0.0.1:161";
-              $a = snmp2_walk($ip, "public", ".1.3.6.1.2.1.7.5.1.1");
-              $b = snmp2_walk($ip, "public", ".1.3.6.1.2.1.7.5.1.2");
-              $i = 0;
+              
+                $local_address = snmp2_walk($ip, 'public', '1.3.6.1.2.1.6.13.1.2');
+                $local_port = snmp2_walk($ip, 'public', '1.3.6.1.2.1.6.13.1.3');
+                $remote_address = snmp2_walk($ip, 'public', '1.3.6.1.2.1.6.13.1.4');
+                $remote_port = snmp2_walk($ip, 'public', '1.3.6.1.2.1.6.13.1.5');
+                $state = snmp2_walk($ip, 'public', '1.3.6.1.2.1.6.13.1.1');
+                $i = 0;
               ?>
               <!--for demo wrap-->
               <h1>SNMP DATA</h1>
@@ -115,9 +168,8 @@
                   <thead>
                     <tr>
                       <th>#</th>
-                      <th>IP Address</th>
-                      <th>PORT</th>
-                    </tr>
+                     <th > Local Address </th> <th> Local Port </th><th> Remote Address </th><th> Remote Port </th><th> State </th>  </tr>
+                  
                   </thead>
                 </table>
               </div>
@@ -125,64 +177,21 @@
                 <table cellpadding="0" cellspacing="0" border="0">
                   <tbody>
                     <?php
-                    foreach ($a as $k => $val) {
-                      $data = explode(':', $a[$i])[1];
-                      echo "<tr>
-            <td> $i </td>
-            <td> $data </td>
-            <td> $b[$i] </td>
-          </tr>";
-                      $i++;
-                    }
+                     foreach ($local_address as $k => $val) {
+                      $local_address_explode = explode(':', $local_address[$i])[1];
+                      $remote_address_explode = explode(':', $remote_address[$i])[1];
+                    
+                      echo "<tr> <td> $i </td> <td> $local_address_explode </td> <td> $local_port[$i]</td> <td> $remote_address_explode </td> <td> $remote_port[$i] </td> <td> $state[$i] </td> </tr>";
+	                        $i++;
+                        }
                     ?>
+                  
 
                   </tbody>
                 </table>
               </div>
             </section>
 
-            <!-- <div class="details">fsadfsdf</div> -->
-            <div class="swiper-scrollbar"></div>
-          </div>
-          <div class="swiper-slide DataBase">
-            <section>
-              <?php $ip = "127.0.0.1:161";
-              $a = snmp2_walk($ip, "public", ".1.3.6.1.2.1.7.5.1.1");
-              $b = snmp2_walk($ip, "public", ".1.3.6.1.2.1.7.5.1.2");
-              $i = 0;
-              ?>
-              <!--for demo wrap-->
-              <h1>SNMP DATA</h1>
-              <div class="tbl-header">
-                <table cellpadding="0" cellspacing="0" border="0">
-                  <thead>
-                    <tr>
-                      <th>#</th>
-                      <th>IP Address</th>
-                      <th>PORT</th>
-                    </tr>
-                  </thead>
-                </table>
-              </div>
-              <div class="tbl-content">
-                <table cellpadding="0" cellspacing="0" border="0">
-                  <tbody>
-                    <?php
-                    foreach ($a as $k => $val) {
-                      $data = explode(':', $a[$i])[1];
-                      echo "<tr>
-            <td> $i </td>
-            <td> $data </td>
-            <td> $b[$i] </td>
-          </tr>";
-                      $i++;
-                    }
-                    ?>
-
-                  </tbody>
-                </table>
-              </div>
-            </section>
             <!-- <div class="details">fsadfsdf</div> -->
             <div class="swiper-scrollbar"></div>
           </div>

@@ -11,7 +11,7 @@ echo("<br><br>===== TCP TABLE ======><br>");
 $i =0;
 echo"<table>";
 echo "<tr> <td > Index </td><td > Local Address </td> <td> Local Port </td><td> Remote Address </td><td> Remote Port </td><td> State </td>  </tr>";
-foreach ($ip_address as $k=>$val) {
+foreach ($local_address as $k=>$val) {
   $local_address_explode = explode(':', $local_address[$i])[1];
   $remote_address_explode = explode(':', $remote_address[$i])[1];
 
