@@ -20,41 +20,38 @@
            <!-- system -->
           <div class="swiper-slide DataBase">
             <section>
-              <?php $ip = "127.0.0.1:161";
-              $a = snmp2_walk($ip, "public", ".1.3.6.1.2.1.7.5.1.1");
-              $b = snmp2_walk($ip, "public", ".1.3.6.1.2.1.7.5.1.2");
-              $i = 0;
-              ?>
+              
               <!--for demo wrap-->
               <h1>SNMP DATA</h1>
-              <div class="tbl-header">
+              <h2>System information</h2>
+              <div class="tbl-content">
                 <table cellpadding="0" cellspacing="0" border="0">
                   <thead>
                     <tr>
-                      <th>#</th>
-                      <th>IP Address</th>
-                      <th>PORT</th>
-                    </tr>
+                                        <?php
+                    $ip = "127.0.0.1:161";
+                    
+                    $var1 =  snmp2_get($ip, "public", ".1.3.6.1.2.1.1.1.0");
+                    $var2 =  snmp2_get($ip, "public", ".1.3.6.1.2.1.1.2.0") ;
+                    $var3 = snmp2_get($ip, "public", ".1.3.6.1.2.1.1.3.0") ;
+                    $var4 = snmp2_get($ip, "public", ".1.3.6.1.2.1.1.4.0") ;
+                    $var5 =  snmp2_get($ip, "public", ".1.3.6.1.2.1.1.5.0");
+                    $var6 = snmp2_get($ip, "public", ".1.3.6.1.2.1.1.6.0") ;
+                    echo "<tr> <td> &nbsp &nbsp &nbsp $var1 </td> </tr>
+                       <tr> <td> &nbsp &nbsp &nbsp  $var1 </td> </tr>
+                       <tr> <td> &nbsp &nbsp &nbsp  $var2 </td> </tr>
+                       <tr> <td> &nbsp &nbsp &nbsp  $var3 </td> </tr>
+                       <tr> <td> &nbsp &nbsp &nbsp $var4 </td> </tr>
+                       <tr> <td> &nbsp &nbsp &nbsp $var5 </td> </tr>
+                       <tr> <td> &nbsp &nbsp &nbsp $var6 </td> </tr>
+";
+                    ?>
+                      
                   </thead>
                 </table>
               </div>
               <div class="tbl-content">
-                <table cellpadding="0" cellspacing="0" border="0">
-                  <tbody>
-                    <?php
-                    foreach ($a as $k => $val) {
-                      $data = explode(':', $a[$i])[1];
-                      echo "<tr>
-            <td> $i </td>
-            <td> $data </td>
-            <td> $b[$i] </td>
-          </tr>";
-                      $i++;
-                    }
-                    ?>
-
-                  </tbody>
-                </table>
+               
               </div>
             </section>
             <!-- <div class="details">fsadfsdf</div> -->
@@ -71,6 +68,7 @@
               ?>
               <!--for demo wrap-->
               <h1>SNMP DATA</h1>
+              <h2>UDP Table</h2>
               <div class="tbl-header">
                 <table cellpadding="0" cellspacing="0" border="0">
                   <thead>
@@ -109,19 +107,22 @@
           <div class="swiper-slide DataBase">
             <section>
               <?php $ip = "127.0.0.1:161";
-              $a = snmp2_walk($ip, "public", ".1.3.6.1.2.1.7.5.1.1");
-              $b = snmp2_walk($ip, "public", ".1.3.6.1.2.1.7.5.1.2");
+              $a = snmp2_walk($ip, "public", ".1.3.6.1.2.1.4.22.1.2");
+              $b = snmp2_walk($ip, "public", ".1.3.6.1.2.1.4.22.1.3");
+              $c = snmp2_walk($ip, "public", ".1.3.6.1.2.1.4.22.1.4");
               $i = 0;
               ?>
               <!--for demo wrap-->
               <h1>SNMP DATA</h1>
+              <h2>ARP Table</h2>
               <div class="tbl-header">
                 <table cellpadding="0" cellspacing="0" border="0">
                   <thead>
                     <tr>
                       <th>#</th>
-                      <th>IP Address</th>
-                      <th>PORT</th>
+                      <th>MAC</th>
+                      <th>IP</th>
+                      <th>Type</th>
                     </tr>
                   </thead>
                 </table>
@@ -131,14 +132,14 @@
                   <tbody>
                     <?php
                     foreach ($a as $k => $val) {
-                      $data = explode(':', $a[$i])[1];
                       echo "<tr>
-            <td> $i </td>
-            <td> $data </td>
-            <td> $b[$i] </td>
-          </tr>";
+                        <td> $i </td>
+                        <td> $a[$i] </td>
+                        <td> $b[$i] </td>
+                        <td> $c[$i] </td>
+                      </tr>";
                       $i++;
-                    }
+                      }
                     ?>
 
                   </tbody>
@@ -163,6 +164,7 @@
               ?>
               <!--for demo wrap-->
               <h1>SNMP DATA</h1>
+              <h2>TCP Table</h2>
               <div class="tbl-header">
                 <table cellpadding="0" cellspacing="0" border="0">
                   <thead>
