@@ -7,7 +7,7 @@
   <title>SNMP</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="node_modules/swiper/swiper-bundle.min.css" />
-  <script src="fetchData.js" defer></script>
+  <script src="fetchData.js"></script>
 </head>
 
 <body>
