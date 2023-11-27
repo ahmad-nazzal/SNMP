@@ -1,3 +1,4 @@
+<?php
 $ip = "127.0.0.1:161";
 print("<br>-------(ARP)IPNetToMedia table-----------<br>");
 
@@ -27,3 +28,4 @@ echo "<table>";
   $i++;
   }
   echo "</table>";
+  ?>
