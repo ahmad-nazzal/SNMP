@@ -1,4 +1,8 @@
 <?php
+
+header("Access-Control-Allow-Origin: *");
+header("Content-Type: application/json");
+
 $ip = "127.0.0.1:161";
 
 $var1 =  snmp2_get($ip, "public", ".1.3.6.1.2.1.1.1.0");
