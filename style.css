@@ -184,3 +184,6 @@ iframe {
 form {
   display: inline-block;
 }
+.updateData {
+  color: #000;
+}

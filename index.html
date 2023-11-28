@@ -28,20 +28,28 @@
                       <!-- we add chilren here by js -->
                     </thead>
                   </table>
-                  <form class="form" action="server/updateData.php">
+                  <form
+                    class="form"
+                    action="server/updateData.php"
+                    method="post"
+                  >
                     <div>
                       <label>sysContact</label>
-                      <input type="text" />
+                      <input type="text" name="sysContact" class="updateData" />
                     </div>
                     <div>
                       <label>sysName</label>
-                      <input type="text" />
+                      <input type="text" name="sysName" class="updateData" />
                     </div>
                     <div>
                       <label>sysLocation</label>
-                      <input type="text" />
+                      <input
+                        type="text"
+                        name="sysLocation"
+                        class="updateData"
+                      />
                     </div>
-                    <input type="submit" value="Update" />
+                    <input type="submit" value="Update" class="updateData" />
                   </form>
                 </div>
               </section>
