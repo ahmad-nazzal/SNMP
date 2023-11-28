@@ -129,7 +129,9 @@ iframe {
   text-align: center;
 }
 
-.append-buttons a {
+.append-buttons a,
+.updateData {
+  background-color: black;
   display: inline-block;
   border: 1px solid #007aff;
   color: #007aff;
@@ -185,5 +187,5 @@ form {
   display: inline-block;
 }
 .updateData {
-  color: #000;
+  cursor: pointer;
 }
