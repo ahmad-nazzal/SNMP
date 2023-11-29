@@ -11,11 +11,13 @@ $remote_address = snmp2_walk($ip, $community, '1.3.6.1.2.1.6.13.1.4');
 $remote_port = snmp2_walk($ip, $community, '1.3.6.1.2.1.6.13.1.5');
 $state = snmp2_walk($ip, $community, '1.3.6.1.2.1.6.13.1.1');
 $i = 0;
-$response = "";
+$matrixOfData = array();
 foreach ($local_address as $k => $val) {
   $local_address_explode = explode(':', $local_address[$i])[1];
   $remote_address_explode = explode(':', $remote_address[$i])[1];
-  $response .= "<tr> <td> $i </td> <td> $local_address_explode </td> <td> $local_port[$i]</td> <td> $remote_address_explode </td> <td> $remote_port[$i] </td> <td> $state[$i] </td> </tr>";
+  $colData = array();
+  array_push($colData, $i, $local_address_explode, $local_port[$i], $remote_address_explode, $remote_port[$i], $state[$i]);
+  array_push($matrixOfData, $colData);
   $i++;
 }
-echo $response;
+echo json_encode($matrixOfData);

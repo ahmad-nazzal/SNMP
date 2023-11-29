@@ -182,10 +182,14 @@ iframe {
   justify-content: space-around;
   align-items: center;
   height: 70px;
+  margin-top: 50px;
 }
 form {
   display: inline-block;
 }
 .updateData {
   cursor: pointer;
+}
+.input {
+  color: black;
 }

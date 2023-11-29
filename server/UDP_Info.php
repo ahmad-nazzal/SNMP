@@ -8,10 +8,12 @@ $community = "public";
 $a = snmp2_walk($ip, $community, ".1.3.6.1.2.1.7.5.1.1");
 $b = snmp2_walk($ip, $community, ".1.3.6.1.2.1.7.5.1.2");
 $i = 0;
-$response = "";
+$matrixOfData = array();
 foreach ($a as $k => $val) {
   $data = explode(':', $a[$i])[1];
-  $response .= "<tr> <td> $i </td><td> $data </td> <td> $b[$i] </td>  </tr>";
+  $colData = array();
+  array_push($colData, $i, $data, $b[$i]);
+  array_push($matrixOfData, $colData);
   $i++;
 }
-echo $response;
+echo json_encode($matrixOfData);

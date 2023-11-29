@@ -9,14 +9,11 @@ $a = snmp2_walk($ip, $community, ".1.3.6.1.2.1.4.22.1.2");
 $b = snmp2_walk($ip, $community, ".1.3.6.1.2.1.4.22.1.3");
 $c = snmp2_walk($ip, $community, ".1.3.6.1.2.1.4.22.1.4");
 $i = 0;
-$response = "";
+$matrixOfData = array();
 foreach ($a as $k => $val) {
-  $response .= "<tr>
-    <td> $i </td>
-    <td> $a[$i] </td>
-    <td> $b[$i] </td>
-    <td> $c[$i] </td>
-  </tr>";
+  $colData = array();
+  array_push($colData, $i, $a[$i], $b[$i], $c[$i]);
+  array_push($matrixOfData, $colData);
   $i++;
 }
-echo $response;
+echo json_encode($matrixOfData);
