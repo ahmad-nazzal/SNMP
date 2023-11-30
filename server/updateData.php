@@ -1,7 +1,7 @@
 <?php
-$sysContact = $_POST['sysContact'];
-$sysName = $_POST['sysName'];
-$sysLocation = $_POST['sysLocation'];
+$sysContact = $_REQUEST['sysContact'];
+$sysName = $_REQUEST['sysName'];
+$sysLocation = $_REQUEST['sysLocation'];
 
 $ip = "127.0.0.1:161";
 $community = 'network2';  //ana hek smetha - 7ader
